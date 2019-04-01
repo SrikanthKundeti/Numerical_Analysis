@@ -1,0 +1,41 @@
+function [] = NewtonRaphsonwithHorner(x0,a,epsilon)
+%find one root of the polynimoial. Using the Set Up for Horner's Method.
+alpha(1) = a(1);
+error = epsilon*10;
+%while (error > epsilon)
+    for i = 2:1:length(a)
+    alpha(i) = a(i) + x0*alpha(i-1);
+    end
+
+    beta(1) = alpha(1);
+    for i = 2:1:(length(a)-1)
+    beta(i) = alpha(i) + x0*beta(i-1);
+    end
+
+    px0 = alpha(length(a));
+    dpx0 = beta((length(a)-1));
+    x1 = x0 - (px0/dpx0);
+    error = sqrt((x1-x0)^2);
+%end
+% Creating a While Loop to solve this caused problems with Run-Time.
+% Manually inputting values is more efficient for the small test case form
+% Lecture 5.
+
+% disp(x1);disp(error)
+% 
+% > NewtonRaphsonwithHorner(x0,a,epsilon)
+%      2
+% 
+%      1
+% 
+% x0 = 2
+% 
+% x0 =
+% 
+%      2
+% 
+% NewtonRaphsonwithHorner(x0,a,epsilon)
+%      2
+% 
+%      0
+
