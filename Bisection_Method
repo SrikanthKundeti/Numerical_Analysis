@@ -1,0 +1,26 @@
+
+function [c] = BisectionMethod(a,b,t)
+%t is the exponent of epsilon or error (10^-t)
+c = (a+b)/2;
+fa = (sqrt(1+(1/a))-1);
+fc = (sqrt(1+(1/c))-1);
+I = [ 4 7 10 14 17 20 24 27 30];
+i=0;
+
+while i<I(t)
+    if fa*fc<0
+        b = c;
+        c = (a+b)/2;
+        fa = (sqrt(1+(1/a))-1);
+fc = (sqrt(1+(1/c))-1);
+i = i+1;
+    elseif fa*fc>0
+        a = c;
+        c=(a+b)/2;
+fa = (sqrt(1+(1/a))-1);
+fc = (sqrt(1+(1/c))-1);
+i = i+1;
+    
+    end
+end
+
