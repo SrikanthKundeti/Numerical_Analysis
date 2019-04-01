@@ -1,0 +1,20 @@
+function [x1, error,c] = HornerMethod3(x0)
+
+a = [ 1 5 -9 -85 -136];
+
+b(1) = 1;
+b(2) = a(2) + x0*b(1);
+b(3) = a(3) + x0*b(2);
+b(4) = a(4) + x0*b(3);
+b(5) = a(5) + x0*b(4);
+
+c(1) = 1;
+c(2) = b(2) + x0*c(1);
+c(3) = b(3) + x0*c(2);
+c(4) = b(4) + x0*c(3);
+c = [c(1) c(2) c(3) c(4)];
+px = b(5);
+dpx = c(4);
+x1 = x0 - (px/dpx);
+error = sqrt((x1-x0)^2);
+disp(c);
