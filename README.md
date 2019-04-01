@@ -1,0 +1,3 @@
+# Numerical_Analysis
+I learned many things in Numerical Analysis. This project involves many numerical methods placed into MatLab Code.They involve numerous...
+..... numerical methods that are used in mathematical numerical analysis.
