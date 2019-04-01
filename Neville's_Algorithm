@@ -1,0 +1,37 @@
+function [] = NevilleAlgorithm(X,Y,r0)
+%r0 is the initial guess.
+%X and Y are arrays with values of the points.
+for k=1:length(Y)
+P(k,k) = Y(k);
+end
+
+for d = 2:length(Y)
+    for i =1:(length(Y) - d + 1)
+        j = i+d-1;
+        P(i,j) = ((r0-X(i))*P(i+1,j) - (r0-X(j))*P(i,j-1))/(X(j)-X(i));
+    end
+end
+answer = P(1,length(Y));
+disp(answer);
+
+% %
+% X = [-1 0 1]
+% 
+% X =
+% 
+%     -1     0     1
+% 
+% Y = [1 0 1]
+% 
+% Y =
+% 
+%      1     0     1
+% 
+% r0 = 0.5
+% 
+% r0 =
+% 
+%     0.5000
+%     
+%     NevilleAlgorithm(X,Y,r0)
+%     0.2500 
