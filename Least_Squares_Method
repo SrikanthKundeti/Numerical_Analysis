@@ -1,0 +1,59 @@
+function [] = leastsquare(m,n,x,y)
+%for n equations, the size of a matrix is (n-1)*(n-1).
+%A is the matrix.
+x = x.';
+y = y.';
+
+for i = 1:1:n+1
+    for j = 1:1:n+1
+    A(i,j) = sum(x.^(j+i-2));
+    end
+end
+A(1,1) = m;
+for i = 1:1:n+1
+    b(i,1) = sum(y.*(x.^(i-1)));
+end
+b(1,1) = sum(y);
+a = b.*inv(A);
+xx= [x(1):0.1:x(n)];
+for i = 1:1:n+1
+    yy = a(i)*(xx.^(i-1));
+end
+plot(xx,yy,x,y,'*');
+
+% % a =
+% % 
+% %    43.9719
+% %    13.4363
+% %    -3.3048
+% %     0.3005
+%  n = 3
+% 
+% n =
+% 
+%      3
+% 
+% m = 10
+% 
+% m =
+% 
+%     10
+%     x
+% 
+% x =
+% 
+%      0     1     2     3     4     5     6     7     8     9
+% 
+% y
+% 
+% y =
+% 
+%   Columns 1 through 8
+% 
+%    45.1300   51.7100   60.1700   64.8300   65.2400   65.1700   67.6500   79.8000
+% 
+%   Columns 9 through 10
+% 
+%    96.1300  115.1900
+% 
+
